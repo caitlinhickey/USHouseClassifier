@@ -3,7 +3,9 @@ Getting started
 
 Run:
 
-'$ python classify.py'
+$ git clone https://github.com/ReedAnders/USHouseClassifier
+$ cd USHouseClassifier
+$ python classify.py
 
 Accuracy
 =========
