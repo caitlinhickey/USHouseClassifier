@@ -7,8 +7,8 @@ from numpy import array
 from sklearn.feature_extraction.text import CountVectorizer, TfidfVectorizer
 from sklearn.linear_model import SGDClassifier
 
-kTARGET_FIELD = 'spoiler'
-kTEXT_FIELD = 'sentence'
+kTARGET_FIELD = 'Label'
+kTEXT_FIELD = 'Text'
 
 
 class Featurizer:
@@ -74,12 +74,12 @@ if __name__ == "__main__":
         count += 1
         if count % 5 == 0:
             # Appends feature stem and category key
-            dev_test.append(feat.append_data_to_sentence(ii['sentence']))
-            y_dev_test.append(ii['spoiler'])
+            dev_test.append(feat.append_data_to_sentence(ii['Text']))
+            y_dev_test.append(ii['Label'])
         else:
             # Appends feature stem and category key
-            dev_train.append(feat.append_data_to_sentence(ii['sentence']))
-            y_dev_train.append(ii['spoiler'])
+            dev_train.append(feat.append_data_to_sentence(ii['Text']))
+            y_dev_train.append(ii['Label'])
         
         # Full
         # full_train.append(feat.append_data_to_sentence(ii['sentence'] + ' ' + ii['page'] + ' ' + ii['trope']))

@@ -9,7 +9,7 @@ for line in votes:
 	BoolVote = None
 	if line['Indiv.Vote'] == 'Yea':
 		BoolVote = True
-	if line['Indiv.Vote'] == 'Nea':
+	if line['Indiv.Vote'] == 'Nay':
 		BoolVote = False
 	if BoolVote == None:
 		continue
@@ -25,6 +25,7 @@ for line in bills:
 		text.update({line['BillNum']:line['Title']})
 
 # Save combined dictionary as CSV
+
 
 o = DictWriter(open("train.csv", 'w'), ["No.", "Label", "Text"])
 o.writeheader()
