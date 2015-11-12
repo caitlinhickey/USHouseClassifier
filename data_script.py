@@ -27,8 +27,8 @@ for line in bills:
 # Save combined dictionary as CSV
 
 o = DictWriter(open("train.csv", 'w'), ["No.", "Label", "Text"])
-    o.writeheader()
-    for BillNum in labels.keys():
-		if text[BillNum]:
-	        d = {'No.':BillNum , 'Label':labels[BillNum] , 'Text':text[BillNum] }
-	        o.writerow(d)
+o.writeheader()
+for BillNum in labels.keys():
+	if text[BillNum]:
+		d = {'No.':BillNum , 'Label':labels[BillNum] , 'Text':text[BillNum] }
+		o.writerow(d)
