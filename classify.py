@@ -31,8 +31,7 @@ class Featurizer:
         length = ' ' + str(len(pos_tok))
         bigrams = self.word_ngram(text,2)
         result =  length + bigrams + lemma_string
-        #result =  length + text + POS_string
-        print result
+
         return result
         
     def POS_converter(self,text):
