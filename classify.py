@@ -3,6 +3,8 @@ from csv import DictReader, DictWriter
 import numpy as np
 import nltk, re
 from numpy import array
+from nltk.stem import *
+
 
 from sklearn.feature_extraction.text import CountVectorizer, TfidfVectorizer
 from sklearn.linear_model import SGDClassifier
@@ -24,11 +26,44 @@ class Featurizer:
         # pos_li = nltk.pos_tag(pos_tok)
         # for ii in pos_li:
         #     pos = pos + ' ' + ii[1]
-        
+        POS_string=self.POS_converter(text)
+        lemma_string=self.stemmer_unigram(text)
         length = ' ' + str(len(pos_tok))
-        result = text + length
+        bigrams = self.word_ngram(text,2)
+        result =  length + bigrams + lemma_string
+        #result =  length + text + POS_string
+        print result
         return result
+        
+    def POS_converter(self,text):
+        POS_list=nltk.pos_tag(text)
+        PoS=[item[1] for item in POS_list]
+        string = ' '.join(PoS)
+        return string
+        
+    def stemmer_unigram(self,token):
+        stemmer = PorterStemmer()
+        token=token.split()
+        base = [stemmer.stem(t) for t in token]
+        string=' '.join(base)
+        return string
 
+    def word_ngram(self,token,N):
+        if N < 2: return 'please give a number bigger than one'
+        else:
+            token = token.split(' ')
+            output = []
+            for m in range(2,N+1):
+                for i in range(len(token)-m+1):
+                    output.append(token[i:i+m])
+            o=[]
+            for item in output:
+                if len(item)>=2:
+                    o.append(''.join(item))
+                else:o.append(item[0])
+            o=' '.join(o)
+            return o         
+        
     def train_feature(self, examples):
         return self.vectorizer.fit_transform(examples)
 
