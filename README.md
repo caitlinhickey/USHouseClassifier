@@ -10,9 +10,9 @@ $ python classify.py
 Accuracy
 =========
 
-Update 11/11/2015
+Update 11/17/2015
 
-Pos: services consumer college 19 amend programs certain provide 47 purposes 47  
-Neg: dodaj 45 purposes 45 defense luay hadad hadad relief luay luay treatment government  
-Accuracy on dev: 0.785714  
+Pos: protect 2014 amend certain code 47abill billto 47abill billto toimprove toreform reformthe provid
+Neg: dodaj purposesto reform 45toreform 45toreform reformthe treatment billto torepeal nation histor histor 1990 trail
+Accuracy on dev: 0.809524
 
